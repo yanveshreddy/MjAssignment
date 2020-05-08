@@ -1,11 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, NavLink, HashRouter } from "react-router-dom";
+import Home from './components/Home';
+import Stocks from './components/Stocks';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
+      <HashRouter>
+        <div>
+          <ul className="header">
+            <li>
+              <NavLink to="/">Home |</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Stocks">Stocks</NavLink>
+            </li>
+          </ul>
+          <div className="content">
+            <Route exact path="/" component={Home} />
+            <Route path="/Stocks" component={Stocks} />
+          </div>
+        </div>
+      </HashRouter>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -18,7 +35,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
